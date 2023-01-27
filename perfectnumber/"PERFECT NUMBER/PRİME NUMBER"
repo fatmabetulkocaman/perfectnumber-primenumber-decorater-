@@ -1,0 +1,44 @@
+"""Program
+Write a program that prints prime numbers from 1 to 1000. Then one decorator function
+Add the ability to print perfect numbers from 1 to 1000 to this function using"""
+
+def perfectNumber(func):
+    def perfect_numberFind():
+        print("Perfect Numbers:")
+        print("-----------------")
+
+        perfect_numberList = list()
+
+        
+
+        for perfect in range(1,1001):
+            
+            total_ = 0
+            for number in range(1,perfect):
+                if perfect % number == 0:
+                    total_ += number
+                  
+            if total_ == perfect:
+                perfect_numberList.append(total_)
+
+        print(perfect_numberList)
+
+        func()
+    return perfect_numberFind
+
+
+@perfectNumber
+def prime_numberFind():
+    print("\n")
+    print("Prime Numbers:")
+    print("-------------")
+    primeNumbers = list()
+
+    for number_ in range(1,1001):
+        for primeNumber in range(2,1001):
+            if number_ % primeNumber == 0:
+                break
+            elif number_ % primeNumber != 0 and primeNumber == number_-1:
+                primeNumbers.append(number_)
+    print(primeNumbers)
+prime_numberFind()
